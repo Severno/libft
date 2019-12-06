@@ -103,50 +103,16 @@ LIBFT_STR_SRC:= ft_check_end_spaces \
 				ft_tolower \
 				ft_toupper
 
-
-
-#FILES:= get_next_line
-#
-##combine file paths without .o or .c
-#FILES_PATH+= $(addprefix $(LIBFT_LST_PATH),$(LIBFT_LST_SRC))
-#FILES_PATH+= $(addprefix $(LIBFT_MATH_PATH),$(LIBFT_MATH_SRC))
-#FILES_PATH+= $(addprefix $(LIBFT_MEM_PATH),$(LIBFT_MEM_SRC))
-#FILES_PATH+= $(addprefix $(LIBFT_NUM_PATH),$(LIBFT_NUM_SRC))
-#FILES_PATH+= $(addprefix $(LIBFT_PUT_PATH),$(LIBFT_PUT_SRC))
-#FILES_PATH+= $(addprefix $(LIBFT_STR_PATH),$(LIBFT_STR_SRC))
-#FILES_PATH+= $(addprefix $(PRINTF_PATH),$(PRINTF_SRC))
-#
-##combine just names of src files
-#FILES+= $(LIBFT_LST_SRC)
-#FILES+= $(LIBFT_MATH_SRC)
-#FILES+= $(LIBFT_MEM_SRC)
-#FILES+= $(LIBFT_NUM_SRC)
-#FILES+= $(LIBFT_PUT_SRC)
-#FILES+= $(LIBFT_STR_SRC)
-#FILES+= $(PRINTF_SRC)
-#
-#ALL_HEAD:= includes/
-#OBJECTS_PATH := objects/
-#SRC_PATH := src/
-##generate SRC FILES
-#OBJ:=$(addprefix $(OBJECTS_PATH), $(addsuffix .o, $(FILES_PATH)))
-#SRC:=$(addprefix $(SRC_PATH), $(addsuffix .c, $(FILES_PATH)))
-##generate OBJ FILES
-#
-#CC=gcc
-#C_FLAGS:=-Wall -Wextra -Werror -I $(ALL_HEAD)
-#
-#
 FILES:= get_next_line
 
 # ==================
 
 # ==== Standard ====
 CC:=gcc
+C_FLAGS:=-Wall -Wextra -Werror -I $(HEAD_PATH)
 COMPILE_PATH:=objects/
 SRC_PATH:=src/
 HEAD_PATH:=includes/
-C_FLAGS:=-Wall -Wextra -Werror -I $(HEAD_PATH)
 # ==================
 
 # ===== Colors =====
@@ -214,15 +180,13 @@ $(CACHE):
 	@touch $(CACHE)
 
 clean:
-	@rm -rf $( COMPILE_PATH)
+	@rm -Rf $(COMPILE_PATH)
 	@rm -f $(CACHE)
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf objects/
 
-re: fclean
-	@$(MAKE) all
+re: fclean all
 
 norm:
 	@echo $(RED)
