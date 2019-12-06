@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 17:48:40 by sapril            #+#    #+#             */
-/*   Updated: 2019/12/06 15:11:40 by sapril           ###   ########.fr       */
+/*   Updated: 2019/12/06 15:11:49 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include "sort_algs.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
 
