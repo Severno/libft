@@ -6,11 +6,11 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 13:47:34 by sapril            #+#    #+#             */
-/*   Updated: 2019/12/06 11:06:50 by sapril           ###   ########.fr       */
+/*   Updated: 2019/12/06 11:07:12 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../includes/libft.h"
 
 static char		*join_free(char *arr, char *buf)
 {

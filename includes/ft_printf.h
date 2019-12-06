@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:56:43 by sapril            #+#    #+#             */
-/*   Updated: 2019/12/06 09:04:27 by sapril           ###   ########.fr       */
+/*   Updated: 2019/12/06 11:11:07 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <float.h>
+# include <stdarg.h>
 
 typedef union				u_dbl_cast{
 	double					f;
