@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:00:45 by sapril            #+#    #+#             */
-/*   Updated: 2019/12/06 08:49:07 by sapril           ###   ########.fr       */
+/*   Updated: 2019/12/06 08:51:16 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static void		rev_result(char *str)
 	}
 }
 
-char			*ft_convert_dec_base_to_str(int base, long long input_num, char sign)
+char			*ft_convert_dec_base_to_str(int base,
+		long long input_num, char sign)
 {
 	size_t		index;
 	long long	input_cpy;

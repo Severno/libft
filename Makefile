@@ -134,7 +134,7 @@ LIBFT_STR_SRC:= ft_check_end_spaces \
 ##generate OBJ FILES
 #
 #CC=gcc
-#CFLAGS:=-Wall -Wextra -Werror -I $(ALL_HEAD)
+#C_FLAGS:=-Wall -Wextra -Werror -I $(ALL_HEAD)
 #
 #
 FILES:= get_next_line
@@ -142,11 +142,11 @@ FILES:= get_next_line
 # ==================
 
 # ==== Standard ====
-CC:=clang
-CCHPATH:=objects/
-SRCPATH:=src/
-HDRPATH:=includes/
-CFLAGS:=-Wall -Wextra -Werror -I $(HDRPATH)
+CC:=gcc
+COMPILE_PATH:=objects/
+SRC_PATH:=src/
+HEAD_PATH:=includes/
+C_FLAGS:=-Wall -Wextra -Werror -I $(HEAD_PATH)
 # ==================
 
 # ===== Colors =====
@@ -154,13 +154,21 @@ END:="\033[0;0m"
 BLACK:="\033[1;30m"
 RED:="\033[1;31m"
 GREEN:="\033[1;32m"
+LIGHT_GREEN:="\033[1;92m"
 PURPLE:="\033[1;35m"
 CYAN:="\033[1;36m"
 WHITE:="\033[1;37m"
+
+END_IN:=\033[0;0m
+BLACK_IN:=\033[1;30m
+RED_IN:=\033[1;31m
+GREEN_IN:=\033[1;32m
+PURPLE_IN:=\033[1;35m
+CYAN_IN:=\033[1;36m
+WHITE_IN:=\033[1;37m
 # ==================
 
 # ====== Auto ======
-#FILES+=$(GNL_SRC)
 FILES+=$(addprefix $(LIBFT_LST_PATH),$(LIBFT_LST_SRC))
 FILES+=$(addprefix $(LIBFT_MATH_PATH),$(LIBFT_MATH_SRC))
 FILES+=$(addprefix $(LIBFT_MEM_PATH),$(LIBFT_MEM_SRC))
@@ -169,28 +177,13 @@ FILES+=$(addprefix $(PRINTF_PATH),$(PRINTF_SRC))
 FILES+=$(addprefix $(LIBFT_PUT_PATH),$(LIBFT_PUT_SRC))
 FILES+=$(addprefix $(LIBFT_STR_PATH),$(LIBFT_STR_SRC))
 
-SRC:=$(addprefix $(SRCPATH),$(addsuffix .c,$(FILES)))
-OBJ:=$(addprefix $(CCHPATH),$(addsuffix .o,$(FILES)))
+SRC:=$(addprefix $( SRC_PATH),$(addsuffix .c,$(FILES)))
+OBJ:=$(addprefix $(COMPILE_PATH),$(addsuffix .o,$(FILES)))
 # ==================
-CCHF:=.cache_exists
+CACHE:=.cache_exists
 
-
-#test:
-##	@echo "$(SRC_PATH) SRC PATH\n"
-##	@echo "$(FILES) FILES\n"
-##	@echo "$(SRC) SRC\n"
-##	@echo "$(SRC_FOLDERS) SRC FOLDER\n"
-##	@echo "$(OBJECTS_PATH) OBJ_PATH\n"
-##	@echo "$(OBJ) OBJ\n"
-#	@echo "$(GNL_SRC) GNL_SRC\n"
-#	@echo "$(GNL_PATH) GNL_PATH\n"
-#	@echo "$(LIBFT_MATH_PATH) LIBFT_MAYH_PATH\n"
-
-compteur=1
-LENGTH=$(words $(FILES))
-
-#test:
-#	echo $(LENGTH)
+COUNTER= 1
+LENGTH= $(words $(FILES))
 
 all: $(NAME)
 
@@ -200,44 +193,40 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 	@echo $(GREEN) " - Done" $(END)
 
-$(CCHPATH)%.o: $(SRCPATH)%.c | $(CCHF)
-	@echo "  -" $(CYAN)"Compile function:" $(RED)"$(compteur)/$(LENGTH)\c"
+$(COMPILE_PATH)%.o: $(SRC_PATH)%.c $(HEAD_PATH) | $(CACHE)
+	@printf '$(CYAN_IN)%-20s$(RED_IN)%-50s $(GREEN_IN)%-8s' "- Compile function:" "$<" "$(COUNTER)/$(LENGTH)"
 	@echo "\r\c"
-	@$(eval compteur=$(shell echo $$(($(compteur)+1))))
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(eval COUNTER=$(shell echo $$(($(COUNTER)+1))))
+	@$(CC) $(C_FLAGS) -c $< -o $@
 
 %.c:
 	@echo $(RED) "Missing file : $@"
 
-$(CCHF):
-	@mkdir $(CCHPATH)
-	@mkdir $(CCHPATH)$(LIBFT_LST_PATH)
-	@mkdir $(CCHPATH)$(LIBFT_MATH_PATH)
-	@mkdir $(CCHPATH)$(LIBFT_MEM_PATH)
-	@mkdir $(CCHPATH)$(LIBFT_NUM_PATH)
-	@mkdir $(CCHPATH)$(PRINTF_PATH)
-	@mkdir $(CCHPATH)$(LIBFT_PUT_PATH)
-	@mkdir $(CCHPATH)$(LIBFT_STR_PATH)
-	@touch $(CCHF)
+$(CACHE):
+	@mkdir $(COMPILE_PATH)
+	@mkdir $(COMPILE_PATH)$(LIBFT_LST_PATH)
+	@mkdir $(COMPILE_PATH)$(LIBFT_MATH_PATH)
+	@mkdir $(COMPILE_PATH)$(LIBFT_MEM_PATH)
+	@mkdir $(COMPILE_PATH)$(LIBFT_NUM_PATH)
+	@mkdir $(COMPILE_PATH)$(PRINTF_PATH)
+	@mkdir $(COMPILE_PATH)$(LIBFT_PUT_PATH)
+	@mkdir $(COMPILE_PATH)$(LIBFT_STR_PATH)
+	@touch $(CACHE)
 
-#%.o: %.c $(ALL_HEAD)
-#	@$(CC) -Wall -Wextra -Werror -I . -c $< -o $@
-#	@echo "\x1b[32;01mgcc -Wall -Wextra -Werror -I . -c $< -o $@"
 clean:
-	@rm -rf $(CCHPATH)
-	@rm -f $(CCHF)
+	@rm -rf $( COMPILE_PATH)
+	@rm -f $(CACHE)
 
 fclean: clean
 	@rm -f $(NAME)
-
-re: fclean all
+	@rm -rf objects/
 
 re: fclean
 	@$(MAKE) all
 
 norm:
 	@echo $(RED)
-	@norminette $(SRC) $(HDRPATH) | grep -v Norme -B1 || true
+	@norminette src/ $(HEAD_PATH) | grep -v Norme -B1 || echo $(END)$(LIGHT_GREEN)"Norm - OK!"$(END)
 	@echo $(END)
 
 .PHONY: all clean fclean re test norme
