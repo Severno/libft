@@ -108,11 +108,11 @@ FILES:= get_next_line
 # ==================
 
 # ==== Standard ====
-CC:=gcc
-C_FLAGS:=-Wall -Wextra -Werror -I $(HEAD_PATH)
 COMPILE_PATH:=objects/
 SRC_PATH:=src/
 HEAD_PATH:=includes/
+CC:=gcc
+C_FLAGS:=-Wall -Wextra -Werror -I $(HEAD_PATH)
 # ==================
 
 # ===== Colors =====
