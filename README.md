@@ -49,7 +49,7 @@ Now to clean up (removing the .o files and the .c files from the root), call `ma
 
 ### How do I use the library?
 
-I added an example file called **example.c**, it's using the function **ft_putstr** to print "DON'T PANIC" to the screen. 
+I added an example file called **example.c**, it's using the function **ft_putstr** to print "WHOAMI" to the screen. 
 
 If you try to compile it with gcc using `gcc example.c` you will get an *undefined symbol* error for ft_putstr. 
 
