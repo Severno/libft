@@ -1,9 +1,9 @@
 # Libft - @21Born2Code
-##Score 125/125
-###Mandatory
+## Score 125/125
+### Mandatory
 **100/100**
 
-###Bonus
+### Bonus
 **25/25**
 
 ------------
