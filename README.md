@@ -1,4 +1,13 @@
 # Libft - @21Born2Code
+##Score 125/125
+###Mandatory
+**100/100**
+
+###Bonus
+**25/25**
+
+------------
+
 My implementation of some of the Standard C Library functions including some additional ones.
 
 ### FAQ
