@@ -5,8 +5,8 @@
 ##### Bonus
 25/25
 ![Score](Score.png)
-------------
-
+***
+### Challenge
 My implementation of some of the Standard C Library functions including some additional ones.
 
 ### FAQ
