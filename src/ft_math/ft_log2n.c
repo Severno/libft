@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_log2n.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sapril <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: artembykov <artembykov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 16:58:32 by sapril            #+#    #+#             */
-/*   Updated: 2019/09/17 12:35:21 by sapril           ###   ########.fr       */
+/*   Created: 2020/01/21 15:36:24 by artembykov        #+#    #+#             */
+/*   Updated: 2020/01/21 15:36:24 by artembykov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-
-int		ft_str_is_numeric(char *str)
+int		log2n(unsigned int n)
 {
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			str++;
-		else
-			return (0);
-	}
-	return (1);
+	return (n > 1) ? 1 + log2n(n / 2) : 0;
 }

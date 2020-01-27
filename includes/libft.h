@@ -6,7 +6,7 @@
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 17:48:40 by sapril            #+#    #+#             */
-/*   Updated: 2019/12/06 15:11:49 by sapril           ###   ########.fr       */
+/*   Updated: 2020/01/22 16:34:55 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 
-# define MAX_LONG	9223372036854775807
-# define MAX_PRECISION	(2000)
+# define MAX_LONG		9223372036854775807
+# define MAX_INTEGER	2147483647
+# define MIN_INTEGER	-2147483648
+# define MAX_PRECISION	2000
 
 typedef struct		s_list
 {
@@ -105,7 +107,7 @@ char				**ft_strsplit(char const *str, char c);
 int					ft_str_is_lowercase(char *str);
 int					ft_str_is_uppercase(char *str);
 int					ft_str_is_printable(char *str);
-int					ft_str_is_numeric(char *str);
+int					ft_str_is_numeric_with_spaces(char *str);
 int					ft_isspace(char c);
 char				*ft_convert_dec_base_to_str(int base,
 		long long input_num, char sign);
@@ -117,5 +119,17 @@ char				*ft_convert_undec_base_to_str(int base,
 unsigned long long	ft_atoul(const char *str);
 int					ft_unnum_of_fields(unsigned long long int num);
 void				ft_putunbr(unsigned long long int nb);
+void				ft_print_int_arr(int *num_arr, int in_line, size_t size);
+void				ft_print_str_arr(char *arr, int in_line);
+void				ft_print_pstr_arr(char **str, int in_line);
+int					ft_get_number_of_substrings(char **str);
+int					ft_str_is_numeric_no_spaces(char *str);
+int					*ft_copy_int_arr(int *arr, size_t size);
+void				ft_print_ll_arr(long long *num_arr,
+					int in_line, size_t size);
+void				ft_print_sizet_arr(size_t *num_arr,
+					int in_line, size_t size);
+int					ft_max_of_three(int a, int b, int c);
+int					log2n(unsigned int n);
 
 #endif

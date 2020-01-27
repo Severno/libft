@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algs.h                                        :+:      :+:    :+:   */
+/*   ft_str_is_numeric_no_spaces.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 18:47:41 by sapril            #+#    #+#             */
-/*   Updated: 2020/01/22 16:34:00 by sapril           ###   ########.fr       */
+/*   Created: 2019/12/09 13:51:54 by sapril            #+#    #+#             */
+/*   Updated: 2020/01/22 16:32:30 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_ALGS_H
-# define SORT_ALGS_H
-
-# include "libft.h"
-
-int					quick_select(int *arr, int left, int right, int k);
-int					*ft_merge_sort(int *arr, int low, int high);
-void				ft_bubble_sort(int arr[], int n);
-void				ft_quick_sort(int arr[], int low, int high);
-
-#endif
+int		ft_str_is_numeric_no_spaces(char *str)
+{
+	while (*str)
+	{
+		if ((*str >= '0' && *str <= '9')
+			|| ((*str == '-' || *str == '+')
+			&& *(str + 1) >= '0' && *(str + 1) <= '9'))
+			str++;
+		else
+			return (0);
+	}
+	return (1);
+}

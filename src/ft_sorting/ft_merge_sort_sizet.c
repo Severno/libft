@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_merge_sort.c                                    :+:      :+:    :+:   */
+/*   ft_merge_sort_sizet.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/09 08:08:28 by sapril            #+#    #+#             */
-/*   Updated: 2019/12/11 12:25:30 by sapril           ###   ########.fr       */
+/*   Created: 2020/01/22 16:31:42 by sapril            #+#    #+#             */
+/*   Updated: 2020/01/22 16:31:42 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../../includes/sort_algs.h"
 
-static void		copy_left_arr_to_tmp(int low, int middle,
-		int left_arr[], int arr[])
+static void		copy_left_arr_to_tmp(size_t low, size_t middle,
+		size_t *left_arr, size_t *arr)
 {
-	int left_i;
+	size_t left_i;
 
 	left_i = 0;
 	while (left_i < middle - low + 1)
@@ -25,10 +25,10 @@ static void		copy_left_arr_to_tmp(int low, int middle,
 	}
 }
 
-static void		copy_right_arr_to_tmp(int high, int middle,
-		int right_arr[], int arr[])
+static void		copy_right_arr_to_tmp(size_t high, size_t middle,
+		size_t right_arr[], size_t arr[])
 {
-	int right_i;
+	size_t right_i;
 
 	right_i = 0;
 	while (right_i < high - middle)
@@ -38,13 +38,13 @@ static void		copy_right_arr_to_tmp(int high, int middle,
 	}
 }
 
-static void		merge(int arr[], int low, int middle, int high)
+static void		merge(size_t *arr, size_t low, size_t middle, size_t high)
 {
-	int left_i;
-	int right_i;
-	int arr_i;
-	int left_arr[middle - low + 1];
-	int right_arr[high - middle];
+	size_t left_i;
+	size_t right_i;
+	size_t arr_i;
+	size_t left_arr[middle - low + 1];
+	size_t right_arr[high - middle];
 
 	left_i = 0;
 	right_i = 0;
@@ -65,15 +65,15 @@ static void		merge(int arr[], int low, int middle, int high)
 		arr[arr_i++] = right_arr[right_i++];
 }
 
-int				*ft_merge_sort(int *arr, int low, int high)
+size_t			*ft_merge_sort_sizet(size_t *arr, size_t low, size_t high)
 {
-	int middle;
+	size_t middle;
 
 	middle = low + (high - low) / 2;
 	if (low < high)
 	{
-		ft_merge_sort(arr, low, middle);
-		ft_merge_sort(arr, middle + 1, high);
+		ft_merge_sort_sizet(arr, low, middle);
+		ft_merge_sort_sizet(arr, middle + 1, high);
 		merge(arr, low, middle, high);
 	}
 	return (arr);

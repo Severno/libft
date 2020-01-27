@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algs.h                                        :+:      :+:    :+:   */
+/*   ft_print_str_arr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapril <sapril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 18:47:41 by sapril            #+#    #+#             */
-/*   Updated: 2020/01/22 16:34:00 by sapril           ###   ########.fr       */
+/*   Created: 2019/12/09 10:41:18 by sapril            #+#    #+#             */
+/*   Updated: 2019/12/09 10:46:47 by sapril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_ALGS_H
-# define SORT_ALGS_H
+#include "../../includes/libft.h"
 
-# include "libft.h"
+void		ft_print_str_arr(char *arr, int in_line)
+{
+	int i;
 
-int					quick_select(int *arr, int left, int right, int k);
-int					*ft_merge_sort(int *arr, int low, int high);
-void				ft_bubble_sort(int arr[], int n);
-void				ft_quick_sort(int arr[], int low, int high);
-
-#endif
+	i = 0;
+	if (in_line == 1)
+		while (arr[i])
+			ft_printf("%s ", arr[i++]);
+	else if (in_line == 0)
+		while (arr[i])
+			ft_printf("%s\n", arr[i++]);
+}
